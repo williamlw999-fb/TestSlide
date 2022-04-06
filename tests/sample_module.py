@@ -27,7 +27,7 @@ class SomeClass:
         return "property_attribute"
 
     def instance_method_with_star_args(
-        self, first, *args: str, a: bool, b: int, c: Optional[int], d: int = 3
+        self, first, *args: str, a: "bool", b: int, c: "Optional[int]", d: int = 3
     ) -> int:
         return 3
 
@@ -36,14 +36,14 @@ class TargetStr:
     def __str__(self) -> str:
         return "original response"
 
-    def _privatefun(self) -> str:
+    def _privatefun(self) -> "str":
         return "cannotbemocked"
 
 
 class ParentTarget(TargetStr):
     def instance_method(
-        self, arg1: str, arg2: str, kwarg1: str = "", kwarg2: str = ""
-    ) -> List[str]:
+        self, arg1: str, arg2: "str", kwarg1: "str" = "", kwarg2: str = ""
+    ) -> "List[str]":
         return ["original response"]
 
     async def async_instance_method(
@@ -101,7 +101,7 @@ class CallOrderTarget:
     def __repr__(self) -> str:
         return self.name
 
-    def f1(self, arg: Any) -> str:
+    def f1(self, arg: "Any") -> str:
         return "f1: {}".format(repr(arg))
 
     def f2(self, arg: Any) -> str:
@@ -139,7 +139,7 @@ def test_function_returns_coroutine(
 UnionArgType = Dict[str, Union[str, int]]
 
 
-def test_union(arg: UnionArgType) -> None:
+def test_union(arg: "UnionArgType") -> None:
     pass
 
 
