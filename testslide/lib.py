@@ -12,7 +12,6 @@ from functools import wraps
 from inspect import Traceback
 from types import FrameType
 from typing import (
-    get_type_hints,
     TYPE_CHECKING,
     Any,
     Callable,
@@ -21,6 +20,7 @@ from typing import (
     Tuple,
     Type,
     Union,
+    get_type_hints,
 )
 from unittest.mock import Mock
 

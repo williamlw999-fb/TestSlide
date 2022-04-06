@@ -43,7 +43,7 @@ class TargetStr:
 class ParentTarget(TargetStr):
     def instance_method(
         self, arg1: str, arg2: "str", kwarg1: "str" = "", kwarg2: str = ""
-    ) -> "List[str]":
+    ) -> List[str]:
         return ["original response"]
 
     async def async_instance_method(
