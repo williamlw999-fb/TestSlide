@@ -27,7 +27,7 @@ class SomeClass:
         return "property_attribute"
 
     def instance_method_with_star_args(
-        self, first, *args: str, a: "bool", b: int, c: "Optional[int]", d: int = 3
+        self, first, *args: str, a: bool, b: int, c: Optional[int], d: int = 3
     ) -> int:
         return 3
 
@@ -42,7 +42,7 @@ class TargetStr:
 
 class ParentTarget(TargetStr):
     def instance_method(
-        self, arg1: str, arg2: "str", kwarg1: "str" = "", kwarg2: str = ""
+        self, arg1: str, arg2: str, kwarg1: str = "", kwarg2: str = ""
     ) -> List[str]:
         return ["original response"]
 
@@ -101,7 +101,7 @@ class CallOrderTarget:
     def __repr__(self) -> str:
         return self.name
 
-    def f1(self, arg: "Any") -> str:
+    def f1(self, arg: Any) -> str:
         return "f1: {}".format(repr(arg))
 
     def f2(self, arg: Any) -> str:
@@ -136,10 +136,16 @@ def test_function_returns_coroutine(
     return async_test_function(arg1, arg2, kwarg1, kwarg2)
 
 
+def instance_method_with_str_types(
+    arg1: "str", arg2: "Any", arg3: "UnionArgType", kwarg1: "int"
+) -> "Optional[str]":
+    return "original response"
+
+
 UnionArgType = Dict[str, Union[str, int]]
 
 
-def test_union(arg: "UnionArgType") -> None:
+def test_union(arg: UnionArgType) -> None:
     pass
 
 

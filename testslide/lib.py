@@ -26,7 +26,6 @@ from unittest.mock import Mock
 
 import typeguard
 
-
 if sys.version_info >= (3, 8):
     from typing import get_args, get_origin
 elif sys.version_info > (3, 7):
@@ -42,7 +41,6 @@ elif sys.version_info > (3, 7):
         if isinstance(tp, _GenericAlias) and tp.__origin__ is not abc.Callable:
             return tp.__args__
         return ()
-
 
 else:  # python3.6
     from typing import GenericMeta  # type: ignore
